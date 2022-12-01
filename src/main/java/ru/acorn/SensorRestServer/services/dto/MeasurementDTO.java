@@ -1,4 +1,4 @@
-package ru.acorn.SensorRestServer.dto;
+package ru.acorn.SensorRestServer.services.dto;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Max;

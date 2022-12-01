@@ -1,4 +1,4 @@
-package ru.acorn.SensorRestServer.dto;
+package ru.acorn.SensorRestServer.services.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
