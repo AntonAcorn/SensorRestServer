@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.acorn.SensorRestServer.services.dto.SensorDTO;
+import ru.acorn.SensorRestServer.dto.SensorDTO;
 import ru.acorn.SensorRestServer.modells.Sensor;
 import ru.acorn.SensorRestServer.services.SensorService;
 import ru.acorn.SensorRestServer.utils.ErrorsUtil;

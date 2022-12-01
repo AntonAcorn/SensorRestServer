@@ -18,7 +18,7 @@ public class Measurement {
     private Integer id;
 
     @Column (name = "value")
-    @NotEmpty(message = "Value should not be empty")
+    @NotNull(message = "Value should not be empty")
     @Min(value = -100, message = "Value should be greater than -100")
     @Max(value = 100, message = "Value should be less than 100")
     @Getter
@@ -26,13 +26,13 @@ public class Measurement {
     private Double value;
 
     @Column(name = "raining")
-    @NotEmpty(message = "Raining should be true or false")
+    @NotNull(message = "Raining should be true or false")
     @Getter
     @Setter
     private boolean raining;
 
     @Column(name = "measurement_date_time")
-    @NotEmpty
+    @NotNull
     @Getter
     @Setter
     private LocalDateTime localDateTime;
