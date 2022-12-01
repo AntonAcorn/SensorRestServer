@@ -37,7 +37,6 @@ public class Measurement {
     @Setter
     private LocalDateTime localDateTime;
 
-    @Column(name = "sensor")
     @ManyToOne
     @JoinColumn(name = "sensor", referencedColumnName = "name")
     @NotNull
