@@ -5,7 +5,7 @@ through the use of a tool such as
 Postman or any other preferred application.
 
 
-### Использованные технологии
+### Technology stack
 * Java 17
 * Spring Boot
 * Maven
