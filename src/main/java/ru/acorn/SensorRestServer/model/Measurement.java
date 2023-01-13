@@ -1,4 +1,4 @@
-package ru.acorn.SensorRestServer.modells;
+package ru.acorn.SensorRestServer.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -8,7 +8,9 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "measurement")
+@Table(name = "measurement", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "sensor")})
+
 public class Measurement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +40,7 @@ public class Measurement {
     private LocalDateTime localDateTime;
 
     @ManyToOne
-    @JoinColumn(name = "sensor", referencedColumnName = "name")
+    @JoinColumn(name = "sensor", referencedColumnName = "name", unique = true)
     @NotNull
     @Getter
     @Setter

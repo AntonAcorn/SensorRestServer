@@ -1,10 +1,10 @@
-package ru.acorn.SensorRestServer.services;
+package ru.acorn.SensorRestServer.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.acorn.SensorRestServer.modells.Measurement;
-import ru.acorn.SensorRestServer.repositories.MeasurementRepository;
+import ru.acorn.SensorRestServer.model.Measurement;
+import ru.acorn.SensorRestServer.repository.MeasurementRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

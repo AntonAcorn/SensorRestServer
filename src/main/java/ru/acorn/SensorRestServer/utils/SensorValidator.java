@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ru.acorn.SensorRestServer.modells.Sensor;
-import ru.acorn.SensorRestServer.services.SensorService;
+import ru.acorn.SensorRestServer.model.Sensor;
+import ru.acorn.SensorRestServer.service.SensorService;
 @Component
 public class SensorValidator  implements Validator {
     private final SensorService sensorService;
@@ -25,8 +25,7 @@ public class SensorValidator  implements Validator {
     public void validate(Object target, Errors errors) {
         Sensor sensor = (Sensor) target;
         if(sensorService.getSensorByName(sensor.getName()).isPresent()){
-            errors.rejectValue("name", "null", "This sensor is already exists");//эта фраза будет в консоли
-            //и постмане. Они являются частью binding result
+            errors.rejectValue("name", "null", "This sensor is already exists");
         }
     }
 }

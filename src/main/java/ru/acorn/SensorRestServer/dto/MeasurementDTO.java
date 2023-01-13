@@ -1,13 +1,11 @@
 package ru.acorn.SensorRestServer.dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import ru.acorn.SensorRestServer.modells.Sensor;
+import ru.acorn.SensorRestServer.model.Sensor;
 
 public class MeasurementDTO {
     @NotNull(message = "Value should not be empty")

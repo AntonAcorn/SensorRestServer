@@ -1,6 +1,7 @@
 package ru.acorn.SensorRestServer.controllers;
 
 import jakarta.validation.Valid;
+import lombok.extern.log4j.Log4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.acorn.SensorRestServer.dto.SensorDTO;
-import ru.acorn.SensorRestServer.modells.Sensor;
-import ru.acorn.SensorRestServer.services.SensorService;
+import ru.acorn.SensorRestServer.model.Sensor;
+import ru.acorn.SensorRestServer.service.SensorService;
 import ru.acorn.SensorRestServer.utils.ErrorsUtil;
 import ru.acorn.SensorRestServer.utils.SensorErrorResponse;
 import ru.acorn.SensorRestServer.utils.SensorNotFoundException;
@@ -17,6 +18,7 @@ import ru.acorn.SensorRestServer.utils.SensorValidator;
 
 @RestController
 @RequestMapping("/sensors")
+@Log4j
 public class SensorController {
     private final ModelMapper modelMapper;
     private final SensorService sensorService;
@@ -37,6 +39,7 @@ public class SensorController {
         sensorValidator.validate(sensorToRegister, bindingResult);
         if(bindingResult.hasErrors()){
             ErrorsUtil.returnErrorMessage(bindingResult);
+            log.debug(bindingResult);
         }
         sensorService.register(sensorToRegister);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -47,10 +50,11 @@ public class SensorController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @ExceptionHandler//это будет отображаться в постмане
-    private ResponseEntity<SensorErrorResponse> handleException (SensorNotFoundException e){//берет из валидатора или аннотаций
+    @ExceptionHandler
+    private ResponseEntity<SensorErrorResponse> handleException (SensorNotFoundException e){
         SensorErrorResponse sensorErrorResponse = new SensorErrorResponse(e.getMessage(),
                 System.currentTimeMillis());
+        log.error(e.getMessage());
         return new ResponseEntity<>(sensorErrorResponse, HttpStatus.BAD_REQUEST);
     }
 

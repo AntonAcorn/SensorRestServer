@@ -1,10 +1,10 @@
-package ru.acorn.SensorRestServer.services;
+package ru.acorn.SensorRestServer.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.acorn.SensorRestServer.modells.Sensor;
-import ru.acorn.SensorRestServer.repositories.SensorRepository;
+import ru.acorn.SensorRestServer.model.Sensor;
+import ru.acorn.SensorRestServer.repository.SensorRepository;
 
 import java.util.Optional;
 
